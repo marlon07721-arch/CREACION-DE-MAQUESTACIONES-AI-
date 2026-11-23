@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Návita: distribuidora de maquillaje y cuidado facial para profesionales de la belleza. Marcas originales, precios para profesionales y envíos nacionales.">
+  <title>Návita | Maquillaje profesional, acabado natural</title>
+
+  <!-- Tipografías: Playfair Display (títulos) y Poppins (texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Enlace para saltar al contenido (accesibilidad con teclado) -->
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- ===================== HEADER FIJO ===================== -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#inicio" class="logo" aria-label="Návita, ir al inicio">NÁVITA</a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+      <nav aria-label="Navegación principal">
+        <ul class="nav" id="menu-principal">
+          <li><a class="nav__link" href="#inicio">Inicio</a></li>
+          <li><a class="nav__link" href="#productos">Productos</a></li>
+          <li><a class="nav__link" href="#profesionales">Profesionales</a></li>
+          <li><a class="nav__link" href="#testimonios">Testimonios</a></li>
+          <li><a class="nav__link" href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="inicio">
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <p class="eyebrow">Distribuidora profesional</p>
+          <h1>Maquillaje profesional, acabado natural</h1>
+          <p class="hero__lead">Distribuimos marcas originales para esteticistas, maquilladores y salones de todo el país.</p>
+          <div class="hero__actions">
+            <a href="#productos" class="btn btn--primary">Ver productos</a>
+            <a href="#profesionales" class="btn btn--secondary">Soy profesional</a>
+          </div>
+        </div>
+        <!-- Imagen de muestra decorativa (se reemplazará por una foto del cliente) -->
+        <div class="hero__media" aria-hidden="true">
+          <span class="hero__media-logo">NÁVITA</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== BENEFICIOS ===================== -->
+    <section class="benefits" aria-labelledby="beneficios-titulo">
+      <div class="container">
+        <h2 id="beneficios-titulo" class="visually-hidden">Beneficios</h2>
+        <ul class="benefits__list">
+          <li class="benefit">
+            <svg class="benefit__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7z"/></svg>
+            <span>Marcas originales</span>
+          </li>
+          <li class="benefit">
+            <svg class="benefit__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12l-8 8-9-9V3h8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>
+            <span>Precios para profesionales</span>
+          </li>
+          <li class="benefit">
+            <svg class="benefit__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M1 4h14v11H1zM15 8h4l4 4v3h-8z"/><circle cx="5.5" cy="18" r="2"/><circle cx="18.5" cy="18" r="2"/></svg>
+            <span>Envíos nacionales</span>
+          </li>
+          <li class="benefit">
+            <svg class="benefit__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z"/></svg>
+            <span>Asesoría por WhatsApp</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== PRODUCTOS ===================== -->
+    <section class="section" id="productos" aria-labelledby="productos-titulo">
+      <div class="container">
+        <header class="section__header">
+          <h2 id="productos-titulo">Nuestros productos</h2>
+          <p>Maquillaje y cuidado facial de Vogue, Samy y Khol. Elige un producto y solicita tu cotización.</p>
+        </header>
+
+        <!-- Filtro por categoría -->
+        <div class="filters" role="group" aria-label="Filtrar productos por categoría">
+          <button type="button" class="btn btn--filter" data-filter="todos" aria-pressed="true">Todos</button>
+          <button type="button" class="btn btn--filter" data-filter="rostro" aria-pressed="false">Rostro</button>
+          <button type="button" class="btn btn--filter" data-filter="ojos" aria-pressed="false">Ojos</button>
+          <button type="button" class="btn btn--filter" data-filter="labios" aria-pressed="false">Labios</button>
+          <button type="button" class="btn btn--filter" data-filter="cuidado" aria-pressed="false">Cuidado facial</button>
+        </div>
+        <p class="filters__status" id="filtro-estado" aria-live="polite">Mostrando 12 productos</p>
+
+        <!-- Cuadrícula de productos -->
+        <ul class="grid grid--products">
+
+          <!-- Rostro -->
+          <li class="product-card card" data-category="rostro">
+            <div class="product-card__img product-card__img--rostro" aria-hidden="true"></div>
+            <p class="product-card__brand">Vogue</p>
+            <h3 class="product-card__name">Base de maquillaje mate natural con ácido hialurónico x 30 mL</h3>
+            <p class="product-card__price">$28.500</p>
+            <button type="button" class="btn btn--primary btn--block" data-product="Base de maquillaje mate natural Vogue x 30 mL">Solicitar</button>
+          </li>
+          <li class="product-card card" data-category="rostro">
+            <div class="product-card__img product-card__img--rostro" aria-hidden="true"></div>
+            <p class="product-card__brand">Khol</p>
+            <h3 class="product-card__name">Polvo compacto x 11 g</h3>
+            <p class="product-card__price">$59.900</p>
+            <button type="button" class="btn btn--primary btn--block" data-product="Polvo compacto Khol x 11 g">Solicitar</button>
+          </li>
+          <li class="product-card card" data-category="rostro">
+            <div class="product-card__img product-card__img--rostro" aria-hidden="true"></div>
+            <p class="product-card__brand">Khol</p>
+            <h3 class="product-card__name">Polvo bronceador</h3>
+            <p class="product-card__price">Desde $49.900</p>
+            <button type="button" class="btn btn--primary btn--block" data-product="Polvo bronceador Khol">Solicitar</button>
+          </li>
+          <li class="product-card card" data-category="rostro">
+            <div class="product-card__img product-card__img--rostro" aria-hidden="true"></div>
+            <p class="product-card__brand">Samy</p>
+            <h3 class="product-card__name">Iluminador líquido para ojos y rostro x 16 g</h3>
+            <p class="product-card__price">$22.900</p>
+            <button type="button" class="btn btn--primary btn--block" data-product="Iluminador líquido Samy x 16 g">Solicitar</button>
+          </li>
+
+          <!-- Ojos -->
+          <li class="product-card card" data-category="ojos">
+            <div class="product-card__img product-card__img--ojos" aria-hidden="true"></div>
+            <p class="product-card__brand">Vogue</p>
+            <h3 class="product-card__name">Pestañina Efecto Total 6 a prueba de agua, negro 9 g</h3>
+            <p class="product-card__price">$21.500</p>
+            <button type="button" class="btn btn--primary btn--block" data-product="Pestañina Vogue Efecto Total 6 negro 9 g">Solicitar</button>
+          </li>
+          <li class="product-card card" data-category="ojos">
+            <div class="product-card__img product-card__img--ojos" aria-hidden="true"></div>
+            <p class="product-card__brand">Vogue</p>
+            <h3 class="product-card__name">Tinta de cejas 24H x 4 mL</h3>
+            <p class="product-card__price">$22.500</p>
+            <button type="button" class="btn btn--primary btn--block" data-product="Tinta de cejas Vogue 24H x 4 mL">Solicitar</button>
+          </li>
+          <li class="product-card card" data-category="ojos">
+            <div class="product-card__img product-card__img--ojos" aria-hidden="true"></div>
+            <p class="product-card__brand">Samy</p>
+            <h3 class="product-card__name">Delineador líquido para ojos</h3>
+            <p class="product-card__price">$11.500</p>
+            <button type="button" class="btn btn--primary btn--block" data-product="Delineador líquido Samy">Solicitar</button>
+          </li>
+          <li class="product-card card" data-category="ojos">
+            <div class="product-card__img product-card__img--ojos" aria-hidden="true"></div>
+            <p class="product-card__brand">Samy</p>
+            <h3 class="product-card__name">Sombra compacta matte</h3>
+            <p class="product-card__price">$9.500</p>
+            <button type="button" class="btn btn--primary btn--block" data-product="Sombra compacta matte Samy">Solicitar</button>
+          </li>
+
+          <!-- Labios -->
+          <li class="product-card card" data-category="labios">
+            <div class="product-card__img product-card__img--labios" aria-hidden="true"></div>
+            <p class="product-card__brand">Vogue</p>
+            <h3 class="product-card__name">Labial Colorissimo larga duración</h3>
+            <p class="product-card__price">Desde $12.900</p>
+            <button type="button" class="btn btn--primary btn--block" data-product="Labial Colorissimo Vogue">Solicitar</button>
+          </li>
+          <li class="product-card card" data-category="labios">
+            <div class="product-card__img product-card__img--labios" aria-hidden="true"></div>
+            <p class="product-card__brand">Samy</p>
+            <h3 class="product-card__name">Brillo labial</h3>
+            <p class="product-card__price">$15.500</p>
+            <button type="button" class="btn btn--primary btn--block" data-product="Brillo labial Samy">Solicitar</button>
+          </li>
+          <li class="product-card card" data-category="labios">
+            <div class="product-card__img product-card__img--labios" aria-hidden="true"></div>
+            <p class="product-card__brand">Khol</p>
+            <h3 class="product-card__name">Labial mate cremoso</h3>
+            <p class="product-card__price">$20.900</p>
+            <button type="button" class="btn btn--primary btn--block" data-product="Labial mate cremoso Khol">Solicitar</button>
+          </li>
+
+          <!-- Cuidado facial -->
+          <li class="product-card card" data-category="cuidado">
+            <div class="product-card__img product-card__img--cuidado" aria-hidden="true"></div>
+            <p class="product-card__brand">Khol</p>
+            <h3 class="product-card__name">Suero facial antiedad</h3>
+            <p class="product-card__price">$33.900</p>
+            <button type="button" class="btn btn--primary btn--block" data-product="Suero facial antiedad Khol">Solicitar</button>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== LÍNEA PROFESIONAL ===================== -->
+    <section class="section section--alt" id="profesionales" aria-labelledby="profesionales-titulo">
+      <div class="container pro">
+        <div class="pro__text">
+          <h2 id="profesionales-titulo">Línea profesional</h2>
+          <p>Si eres esteticista, maquillador o tienes un salón o spa, en Návita tienes condiciones especiales para abastecer tu negocio.</p>
+        </div>
+        <div class="pro__content">
+          <ul class="checklist">
+            <li>Descuentos por volumen de compra</li>
+            <li>Asesoría personalizada para elegir productos</li>
+            <li>Pedidos por WhatsApp o por formulario</li>
+            <li>Envíos a todo el país</li>
+          </ul>
+          <a href="#contacto" class="btn btn--primary" id="btn-distribuidor">Quiero ser distribuidor</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TESTIMONIOS ===================== -->
+    <section class="section" id="testimonios" aria-labelledby="testimonios-titulo">
+      <div class="container">
+        <header class="section__header">
+          <h2 id="testimonios-titulo">Testimonios</h2>
+          <p>Testimonios de ejemplo para el prototipo; se reemplazarán por opiniones reales de clientes.</p>
+        </header>
+        <ul class="grid grid--testimonials">
+          <li class="testimonial-card card">
+            <span class="avatar" aria-hidden="true">LM</span>
+            <blockquote class="testimonial-card__quote">“Los pedidos llegan completos y a tiempo. La asesoría por WhatsApp me ahorra mucho tiempo.”</blockquote>
+            <p class="testimonial-card__author"><strong>Laura M.</strong> · Esteticista</p>
+          </li>
+          <li class="testimonial-card card">
+            <span class="avatar" aria-hidden="true">CR</span>
+            <blockquote class="testimonial-card__quote">“Encuentro las marcas que uso en mis servicios con precios que me permiten tener margen.”</blockquote>
+            <p class="testimonial-card__author"><strong>Camila R.</strong> · Maquilladora</p>
+          </li>
+          <li class="testimonial-card card">
+            <span class="avatar" aria-hidden="true">AG</span>
+            <blockquote class="testimonial-card__quote">“Pedir la cotización es muy fácil desde el celular. Me responden el mismo día.”</blockquote>
+            <p class="testimonial-card__author"><strong>Andrea G.</strong> · Salón de belleza</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACTO Y COTIZACIÓN ===================== -->
+    <section class="section section--alt" id="contacto" aria-labelledby="contacto-titulo">
+      <div class="container contact">
+        <div class="contact__info">
+          <h2 id="contacto-titulo">Solicita tu cotización</h2>
+          <p>Completa el formulario y un asesor de Návita te contactará en menos de 24 horas.</p>
+          <ul class="contact__list">
+            <li><strong>Asesor:</strong> Marlon Sanabria</li>
+            <li><strong>Correo:</strong> <a href="mailto:marlon07721@gmail.com">marlon07721@gmail.com</a></li>
+            <li><strong>WhatsApp:</strong> <a href="https://wa.me/573153912224" target="_blank" rel="noopener">315 391 2224</a></li>
+            <li><strong>Horario:</strong> lunes a sábado, 8:00 a. m. – 6:00 p. m.</li>
+          </ul>
+        </div>
+
+        <form class="form card" id="form-cotizacion" novalidate>
+          <p class="form__note">Los campos marcados con <span aria-hidden="true">*</span><span class="visually-hidden">asterisco</span> son obligatorios.</p>
+
+          <div class="form-field">
+            <label for="nombre">Nombre completo <span aria-hidden="true">*</span></label>
+            <input type="text" id="nombre" name="nombre" autocomplete="name" required aria-describedby="nombre-error">
+            <p class="form-field__error" id="nombre-error"></p>
+          </div>
+
+          <div class="form-field">
+            <label for="correo">Correo electrónico <span aria-hidden="true">*</span></label>
+            <input type="email" id="correo" name="correo" autocomplete="email" required aria-describedby="correo-error">
+            <p class="form-field__error" id="correo-error"></p>
+          </div>
+
+          <div class="form-field">
+            <label for="telefono">Celular (10 dígitos) <span aria-hidden="true">*</span></label>
+            <input type="tel" id="telefono" name="telefono" autocomplete="tel" inputmode="numeric" maxlength="10" required aria-describedby="telefono-error">
+            <p class="form-field__error" id="telefono-error"></p>
+          </div>
+
+          <fieldset class="form-field form-field--radios" aria-describedby="tipo-error">
+            <legend>Tipo de cliente <span aria-hidden="true">*</span></legend>
+            <label class="radio"><input type="radio" name="tipo" value="profesional"> Profesional</label>
+            <label class="radio"><input type="radio" name="tipo" value="cliente-final"> Cliente final</label>
+            <p class="form-field__error" id="tipo-error"></p>
+          </fieldset>
+
+          <div class="form-field">
+            <label for="producto">Producto de interés</label>
+            <input type="text" id="producto" name="producto">
+          </div>
+
+          <div class="form-field">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--block">Enviar solicitud</button>
+
+          <!-- Mensaje de confirmación (lo anuncia el lector de pantalla) -->
+          <p class="form__success" id="form-exito" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <p class="logo logo--footer">NÁVITA</p>
+        <p>Maquillaje profesional, acabado natural.</p>
+      </div>
+      <div>
+        <h2 class="footer__title">Contacto</h2>
+        <ul class="footer__list">
+          <li><a href="mailto:marlon07721@gmail.com">marlon07721@gmail.com</a></li>
+          <li><a href="https://wa.me/573153912224" target="_blank" rel="noopener">WhatsApp 315 391 2224</a></li>
+          <li>Lunes a sábado, 8:00 a. m. – 6:00 p. m.</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer__title">Síguenos</h2>
+        <ul class="footer__list">
+          <li><a href="#" aria-label="Instagram de Návita (enlace pendiente)">Instagram</a></li>
+          <li><a href="#" aria-label="Facebook de Návita (enlace pendiente)">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer__copy">© <span id="anio">2026</span> Návita. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a class="whatsapp" href="https://wa.me/573153912224" target="_blank" rel="noopener" aria-label="Escribir a Návita por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.2-.8-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+  </a>
+
+  <script src="app.js"></script>
+</body>
+</html>

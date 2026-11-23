@@ -1,0 +1,716 @@
+/* =========================================================
+   NÁVITA · style.css
+   Enfoque mobile-first. Puntos de corte: 768px y 1024px.
+   ========================================================= */
+
+/* ---------- 1. Variables (identidad visual aprobada) ---------- */
+:root {
+  /* Colores */
+  --color-primary: #263E31;       /* verde del logo */
+  --color-primary-hover: #1B2D23;
+  --color-cream: #F5F1EA;         /* fondo alterno */
+  --color-sage: #A8B5A2;          /* decorativo */
+  --color-price: #9A5A3C;         /* precios (contraste AA) */
+  --color-accent: #C27C5A;        /* anillo de foco y detalles */
+  --color-text: #2E2A26;
+  --color-white: #FFFFFF;
+  --color-error: #B3261E;
+
+  /* Tipografía */
+  --font-title: "Playfair Display", Georgia, serif;
+  --font-body: "Poppins", "Segoe UI", Arial, sans-serif;
+
+  /* Espaciado (múltiplos de 8px) */
+  --space-1: 0.5rem;   /* 8px */
+  --space-2: 1rem;     /* 16px */
+  --space-3: 1.5rem;   /* 24px */
+  --space-4: 2rem;     /* 32px */
+  --space-6: 3rem;     /* 48px */
+  --space-8: 4rem;     /* 64px */
+
+  /* Componentes */
+  --radius-card: 12px;
+  --radius-btn: 8px;
+  --shadow-card: 0 2px 8px rgba(38, 62, 49, 0.08);
+  --header-height: 64px;
+  --container: 1200px;
+}
+
+/* ---------- 2. Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  background: var(--color-white);
+}
+
+h1, h2, h3 {
+  margin: 0 0 var(--space-2);
+  line-height: 1.2;
+  color: var(--color-primary);
+}
+
+h1, h2 {
+  font-family: var(--font-title);
+  font-weight: 600;
+}
+
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.125rem; font-weight: 600; }
+
+p { margin: 0 0 var(--space-2); }
+
+ul { margin: 0; padding: 0; list-style: none; }
+
+a { color: var(--color-primary); }
+
+img, svg { max-width: 100%; display: block; }
+
+/* Las secciones con ancla no quedan tapadas por el header fijo */
+section[id] {
+  scroll-margin-top: var(--header-height);
+}
+
+/* Foco visible y consistente en todos los elementos interactivos */
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ---------- 3. Utilidades ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--space-2);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-2);
+  top: -100px;
+  z-index: 100;
+  padding: var(--space-1) var(--space-2);
+  background: var(--color-white);
+  border-radius: var(--radius-btn);
+}
+
+.skip-link:focus {
+  top: var(--space-1);
+}
+
+/* ---------- 4. Botones ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;                 /* área táctil mínima */
+  padding: 0.625rem var(--space-3);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-btn);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn--primary:hover {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--color-primary);
+}
+
+.btn--secondary:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn--filter {
+  min-height: 40px;
+  padding: 0.375rem var(--space-2);
+  font-size: 0.875rem;
+  background: var(--color-white);
+  color: var(--color-primary);
+}
+
+.btn--filter:hover,
+.btn--filter[aria-pressed="true"] {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn--block {
+  width: 100%;
+}
+
+/* ---------- 5. Header y navegación ---------- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--color-primary);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--header-height);
+}
+
+.logo {
+  font-family: var(--font-body);
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.nav-toggle__bar {
+  display: block;
+  height: 2px;
+  background: var(--color-white);
+  border-radius: 2px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+/* Animación a "X" cuando el menú está abierto */
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Menú móvil: oculto hasta que se abre */
+.nav {
+  display: none;
+  position: absolute;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  padding: var(--space-1) var(--space-2) var(--space-2);
+  background: var(--color-primary);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.nav.is-open {
+  display: block;
+}
+
+.nav__link {
+  display: block;
+  padding: 0.75rem 0;
+  color: var(--color-white);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.nav__link:hover {
+  color: var(--color-sage);
+}
+
+/* ---------- 6. Hero ---------- */
+.hero {
+  padding: var(--space-6) 0;
+  background: var(--color-cream);
+}
+
+.hero__inner {
+  display: grid;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.eyebrow {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-price);
+}
+
+.hero__lead {
+  font-size: 1.125rem;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+/* Imagen de muestra hecha con CSS (sin archivos externos) */
+.hero__media {
+  display: none;
+}
+
+/* ---------- 7. Beneficios ---------- */
+.benefits {
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--color-cream);
+}
+
+.benefits__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3) var(--space-2);
+}
+
+.benefit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  text-align: center;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.benefit__icon {
+  width: 32px;
+  height: 32px;
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+/* ---------- 8. Secciones ---------- */
+.section {
+  padding: var(--space-8) 0;
+}
+
+.section--alt {
+  background: var(--color-cream);
+}
+
+.section__header {
+  max-width: 640px;
+  margin-bottom: var(--space-4);
+}
+
+/* ---------- 9. Tarjetas y cuadrículas ---------- */
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-3);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: 1fr;    /* móvil: 1 columna */
+}
+
+/* Filtros: se quedan visibles bajo el header mientras se recorre la lista */
+.filters {
+  position: sticky;
+  top: var(--header-height);
+  z-index: 10;
+  display: flex;
+  gap: var(--space-1);
+  overflow-x: auto;              /* en móvil se desplazan horizontalmente dentro de su caja */
+  padding: var(--space-1) 0;
+  background: var(--color-white);
+}
+
+.filters .btn {
+  flex: 0 0 auto;
+}
+
+.filters__status {
+  font-size: 0.875rem;
+  margin: var(--space-1) 0 var(--space-3);
+}
+
+/* Tarjeta de producto */
+.product-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card[hidden] {
+  display: none;
+}
+
+.product-card__img {
+  aspect-ratio: 16 / 9;          /* en móvil más baja para reducir el scroll; 1:1 desde tablet */
+  margin-bottom: var(--space-2);
+  border-radius: var(--radius-btn);
+  background-color: var(--color-cream);
+  background-image: radial-gradient(circle at 50% 55%, var(--swatch) 0 22%, transparent 23%);
+}
+
+.product-card__img--rostro  { --swatch: #D9B8A0; }
+.product-card__img--ojos    { --swatch: #3B3B3B; }
+.product-card__img--labios  { --swatch: #A94F4F; }
+.product-card__img--cuidado { --swatch: var(--color-sage); }
+
+.product-card__brand {
+  margin-bottom: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.product-card__name {
+  flex-grow: 1;                  /* alinea precios y botones aunque los nombres tengan distinta longitud */
+  color: var(--color-text);
+}
+
+.product-card__price {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-price);
+}
+
+/* ---------- 10. Línea profesional ---------- */
+.pro {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.checklist {
+  margin-bottom: var(--space-3);
+}
+
+.checklist li {
+  position: relative;
+  padding-left: var(--space-4);
+  margin-bottom: var(--space-1);
+}
+
+.checklist li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* ---------- 11. Testimonios ---------- */
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-sage);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.testimonial-card__quote {
+  margin: 0;
+  flex-grow: 1;
+  font-style: italic;
+}
+
+.testimonial-card__author {
+  margin: 0;
+  font-size: 0.9375rem;
+}
+
+/* ---------- 12. Contacto y formulario ---------- */
+.contact {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.contact__list li {
+  margin-bottom: var(--space-1);
+  overflow-wrap: anywhere;       /* evita desbordes con el correo en 360px */
+}
+
+.form__note {
+  font-size: 0.875rem;
+}
+
+.form-field {
+  margin-bottom: var(--space-1);
+}
+
+.form-field label,
+.form-field legend {
+  display: block;
+  margin-bottom: 0.375rem;
+  font-weight: 600;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid #8A8580;
+  border-radius: var(--radius-btn);
+  font: inherit;
+  color: var(--color-text);
+}
+
+.form-field input:focus-visible,
+.form-field textarea:focus-visible {
+  border-color: var(--color-primary);
+}
+
+.form-field--radios {
+  border: 0;
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.radio {
+  display: inline-flex !important;
+  align-items: center;
+  gap: var(--space-1);
+  margin-right: var(--space-3);
+  font-weight: 400 !important;
+  min-height: 44px;
+}
+
+.radio input {
+  width: 20px;
+  height: 20px;
+  min-height: 0;
+  accent-color: var(--color-primary);
+}
+
+/* Estado de error */
+.form-field.has-error input {
+  border: 2px solid var(--color-error);
+}
+
+/* El espacio del error queda reservado siempre: así el formulario no "salta"
+   al aparecer o desaparecer un mensaje (corrección de la iteración 4). */
+.form-field__error {
+  min-height: 1.4rem;
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.4rem;
+  color: var(--color-error);
+}
+
+/* Mensaje de éxito */
+.form__success {
+  margin: var(--space-2) 0 0;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.form__success:not(:empty) {
+  padding: var(--space-2);
+  background: #E6EEE8;
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius-btn);
+}
+
+/* ---------- 13. Footer ---------- */
+.footer {
+  padding: var(--space-6) 0 var(--space-3);
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.footer a {
+  color: var(--color-white);
+}
+
+.footer__inner {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.logo--footer {
+  margin-bottom: var(--space-1);
+}
+
+.footer__title {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-white);
+}
+
+.footer__list li {
+  margin-bottom: var(--space-1);
+  overflow-wrap: anywhere;
+}
+
+.footer__copy {
+  margin: var(--space-4) 0 0;
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+/* ---------- 14. Botón flotante de WhatsApp ---------- */
+.whatsapp {
+  position: fixed;
+  right: var(--space-2);
+  bottom: var(--space-2);
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.whatsapp svg {
+  width: 28px;
+  height: 28px;
+  fill: var(--color-white);
+}
+
+.whatsapp:hover {
+  background: var(--color-primary-hover);
+}
+
+/* =========================================================
+   TABLET · desde 768px
+   ========================================================= */
+@media (min-width: 768px) {
+  h1 { font-size: 2.75rem; }
+  h2 { font-size: 2rem; }
+
+  .container { padding: 0 var(--space-4); }
+
+  .benefits__list { grid-template-columns: repeat(4, 1fr); }
+
+  .grid--products,
+  .grid--testimonials { grid-template-columns: repeat(2, 1fr); }
+
+  .product-card__img { aspect-ratio: 1 / 1; }
+
+  .footer__inner { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* =========================================================
+   ESCRITORIO · desde 1024px
+   ========================================================= */
+@media (min-width: 1024px) {
+  h1 { font-size: 3.5rem; }
+  h2 { font-size: 2.5rem; }
+
+  .section { padding: 6rem 0; }   /* 96px */
+
+  /* Menú horizontal: se oculta la hamburguesa */
+  .nav-toggle { display: none; }
+
+  .nav,
+  .nav.is-open {
+    display: flex;
+    position: static;
+    gap: var(--space-4);
+    padding: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .nav__link {
+    padding: var(--space-1) 0;
+    border-bottom: 2px solid transparent;
+  }
+
+  .nav__link:hover {
+    color: var(--color-white);
+    border-bottom-color: var(--color-sage);
+  }
+
+  /* Hero en dos columnas con imagen de muestra */
+  .hero { padding: var(--space-8) 0; }
+
+  .hero__inner { grid-template-columns: 1.2fr 1fr; }
+
+  .hero__media {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-card);
+    background:
+      radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.12) 0 20%, transparent 21%),
+      radial-gradient(circle at 75% 70%, rgba(168, 181, 162, 0.35) 0 25%, transparent 26%),
+      var(--color-primary);
+  }
+
+  .hero__media-logo {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    color: var(--color-white);
+  }
+
+  .filters { overflow-x: visible; }
+
+  .grid--products { grid-template-columns: repeat(4, 1fr); }
+  .grid--testimonials { grid-template-columns: repeat(3, 1fr); }
+
+  .pro,
+  .contact { grid-template-columns: repeat(2, 1fr); align-items: start; }
+
+  .footer__inner { grid-template-columns: 2fr 1fr 1fr; }
+}
+
+/* Respeta a quienes prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
